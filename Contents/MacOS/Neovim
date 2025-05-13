@@ -9,16 +9,9 @@ EOF
   exit 1
 fi
 
-config() {
-  echo '
-    macos_quit_when_last_window_closed yes
-    map cmd+n launch --type os-window nvim
-  '
-}
-
 cd "$HOME"
 
 exec kitty -T 'Neovim' \
-  -c /Users/patrick/.config/kitty/kitty.conf \
-  -c <(config) \
+  -o map="cmd+n launch --type os-window nvim" \
+  -o macos_quit_when_last_window_closed="yes" \
   nvim

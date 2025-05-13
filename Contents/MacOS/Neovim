@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+if ! command -v kitty >/dev/null 2>&1; then
+  osascript <<EOF
+  display alert "Error" \
+    message "The 'kitty' terminal emulator was not found. Please install Kitty and try again." \
+    as critical
+EOF
+  exit 1
+fi
+
+config() {
+  echo '
+    macos_quit_when_last_window_closed yes
+    map cmd+n launch --type os-window nvim
+  '
+}
+
+cd "$HOME"
+
+exec kitty -T 'Neovim' \
+  -c /Users/patrick/.config/kitty/kitty.conf \
+  -c <(config) \
+  nvim

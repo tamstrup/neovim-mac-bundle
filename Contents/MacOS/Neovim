@@ -11,7 +11,7 @@ fi
 
 cd "$HOME"
 
-exec kitty -T 'Neovim' \
+exec arch -arm64 kitty -T 'Neovim' \
   -o map="cmd+n launch --type os-window nvim" \
   -o macos_quit_when_last_window_closed="yes" \
   nvim
